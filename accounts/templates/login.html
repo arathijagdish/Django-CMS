@@ -7,5 +7,24 @@
 
 {% block content %}
     <h1 class="text-center">Login</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-4">
+                <form method="POST">
+                    {{ form.as_p }}
+                    <button class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
+
+
+{% block footer %}
+    <script>
+        document.querySelectorAll('input').forEach(e=>{
+            e.classList.add('form-control')
+        })
+    </script>
+{% endblock footer %}
     
