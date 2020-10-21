@@ -16,7 +16,9 @@ def user_login(request):
 
         user = authenticate(request, username=username, password=password)
         login(request, user)
-        return HttpResponse("Authentication completed")
+        if user.is_superuser:
+            pass
+        return redirect('staff_home')
     
     # If invalid
     return render(request, 'login.html', {'form': lf})
