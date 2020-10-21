@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 # Create your views here.
-def login(request):
+def user_login(request):
     if request.method == "GET":
         return render(request, 'login.html', {'form': AuthenticationForm()})
     
@@ -15,7 +15,7 @@ def login(request):
         password = lf.cleaned_data['password']
 
         user = authenticate(request, username=username, password=password)
-        login(user)
+        login(request, user)
         return HttpResponse("Authentication completed")
     
     # If invalid
