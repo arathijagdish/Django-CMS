@@ -5,6 +5,12 @@
 {% endblock meta %}
 
 
+{% block header %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+{% endblock header %}
+    
+
+
 {% block content %}
     <h1 class="text-center">Craete Post</h1>
     <div class="container">
@@ -12,4 +18,12 @@
         <button type="submit" class="btn btn-primary">Publish</button>
     </div>
 {% endblock content %}
+    
+
+{% block footer %}
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("id_body") });
+</script>
+{% endblock footer %}
     
