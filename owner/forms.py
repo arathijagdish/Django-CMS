@@ -1,4 +1,4 @@
-from django.forms import forms, ModelForm, TextInput, Textarea, URLInput
+from django.forms import forms, ModelForm, TextInput, Textarea
 from .models import Post
 
 class PostCreationForm(ModelForm):
@@ -17,7 +17,7 @@ class PostCreationForm(ModelForm):
                     'class': 'form-control'
                 }
             ),
-            'slug':URLInput(
+            'slug':TextInput(
                 attrs={
                     'class': 'form-control'
                 }

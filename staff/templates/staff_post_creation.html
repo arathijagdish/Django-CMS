@@ -14,8 +14,10 @@
 {% block content %}
     <h1 class="text-center">Craete Post</h1>
     <div class="container">
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Publish</button>
+        <form method="POST">
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Publish</button>
+        </form>
     </div>
 {% endblock content %}
     
@@ -24,6 +26,15 @@
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script>
     var simplemde = new SimpleMDE({ element: document.getElementById("id_body") });
+
+    var title = document.getElementById('id_title');
+    title.addEventListener('keyup', slugify);
+    slugField = document.getElementById('id_slug');
+    function slugify(){
+        text = title.value;
+        slug = text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+        slugField.value = slug;
+    }
 </script>
 {% endblock footer %}
     

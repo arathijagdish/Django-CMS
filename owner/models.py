@@ -32,7 +32,7 @@ class Post(models.Model):
         verbose_name='Last updated',
         auto_now=True,
     )
-    slug = models.URLField(
+    slug = models.CharField(
         verbose_name="Slug",
         max_length=200
     )
