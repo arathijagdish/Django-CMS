@@ -5,7 +5,8 @@ from owner.forms import *
 # Create your views here.
 @login_required
 def home(request):
-    return render(request, 'staff_home.html')
+    posts = Post.objects.filter(created_by=request.user)
+    return render(request, 'staff_home.html', {'data': posts})
 
 @login_required
 def new_post(request):

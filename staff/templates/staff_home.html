@@ -1,11 +1,35 @@
 {% extends 'staff_base.html' %}
 
 {% block meta %}
-    <title>Django CMS</title>
+<title>Django CMS</title>
 {% endblock meta %}
 
 
 {% block content %}
-    <h1 class="text-center">Welcome Staff</h1>
-{% endblock content %}
+<h1 class="text-center">Welcome Staff</h1>
+
+{% for p in data %}
+<div class="container">
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                        data-target="#collapse{{ p.id }}" aria-expanded="true" aria-controls="collapseOne">
+                        {{ p.title }}
+                    </button>
+                </h2>
+            </div>
     
+            <div id="collapse{{ p.id }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    {{ p.body }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+{% endblock content %}
