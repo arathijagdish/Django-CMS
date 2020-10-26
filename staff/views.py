@@ -1,5 +1,4 @@
-from django import http
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.decorators import login_required
 from owner.forms import *
 
@@ -17,5 +16,8 @@ def new_post(request):
     # If posted
     pcf = PostCreationForm(request.POST)
     if pcf.is_valid():
-        return HttpResponse("Saving Data")
+        post = pcf.save(commit=False)
+        post.created_by = request.user
+        post.save()
+        return redirect("staff_home")
     return render(request, 'staff_post_creation.html', {'form': pcf})
