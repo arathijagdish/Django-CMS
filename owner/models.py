@@ -34,7 +34,8 @@ class Post(models.Model):
     )
     slug = models.CharField(
         verbose_name="Slug",
-        max_length=200
+        max_length=200,
+        unique=True
     )
     created_by = models.ForeignKey(
         to=User,
