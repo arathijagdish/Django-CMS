@@ -12,16 +12,20 @@
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
+                <h4 class="mb-0 d-flex">
                     <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
                         data-target="#collapse{{ p.id }}" aria-expanded="true" aria-controls="collapseOne">
                         {{ p.title }}
                     </button>
-
-                </h2>
+                    <div style="float: right;" class="btn-group">
+                        <a class="btn btn-primary fa fa-eye"></a>
+                        <a class="btn btn-success fa fa-edit"></a>
+                        <a class="btn btn-danger fa fa-trash"></a>
+                    </div>
+                </h4>
             </div>
     
-            <div id="collapse{{ p.id }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapse{{ p.id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">   
                     {% autoescape off %}
                         {{ p.body }}
