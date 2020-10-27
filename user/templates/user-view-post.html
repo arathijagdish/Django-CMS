@@ -1,0 +1,21 @@
+{% extends 'user_base.html' %}
+
+{% block meta %}
+    <title>Django CMS</title>
+{% endblock meta %}
+
+
+{% block content %}
+    <h1 class="text-center">{{ data.title }}</h1>
+
+<div class="container">
+    
+    {% autoescape off %}
+    <article>
+        {{ data.body }}
+    </article>
+    {% endautoescape %}
+    
+</div>
+{% endblock content %}
+    
