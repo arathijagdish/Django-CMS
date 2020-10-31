@@ -20,7 +20,7 @@ def new_post(request):
         return render(request, 'staff_post_creation.html', {'form': pcf})
     
     # If posted
-    pcf = PostCreationForm(request.POST)
+    pcf = PostCreationForm(request.POST, request.FILES)
     if pcf.is_valid():
         post = pcf.save(commit=False)
         post.created_by = request.user
@@ -44,7 +44,7 @@ def edit_post(request, id):
         pcf = PostCreationForm(instance = post)
         return render(request, 'staff_post_edit.html', {'form': pcf})
     
-    pcf = PostCreationForm(data = request.POST, instance=post)
+    pcf = PostCreationForm(data = request.POST, instance=post, files=request.FILES)
     if pcf.is_valid():
         pcf.save()
         return redirect('staff_home')
