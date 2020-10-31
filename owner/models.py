@@ -16,6 +16,11 @@ class Post(models.Model):
         null=False
     )
 
+    featured_image = models.ImageField(
+        upload_to = 'images/',
+        blank = True
+    )
+    
     body = models.TextField(
         verbose_name="Body",
         help_text="Post content",
