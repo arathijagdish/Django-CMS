@@ -1,3 +1,4 @@
+import os
 from django.http import request
 from django.http.response import Http404, HttpResponseNotFound
 from django.shortcuts import redirect, render, HttpResponse
@@ -32,6 +33,9 @@ def new_post(request):
 def delete_post(request, id):
     try:
         post = Post.objects.get(pk=id, created_by=request.user)
+        if post.featured_image:
+            if os.path.isfile(post.featured_image.path):
+                os.remove(post.featured_image.path)
         post.delete()
         return redirect('staff_home')
     except:
