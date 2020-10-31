@@ -1,3 +1,4 @@
+from django.http import request
 from django.http.response import Http404, HttpResponseNotFound
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -35,3 +36,19 @@ def delete_post(request, id):
         return redirect('staff_home')
     except:
         return HttpResponseNotFound()
+
+@login_required
+def edit_post(request, id):
+    post = Post.objects.get(pk=id, created_by=request.user)
+    if request.method == "GET":
+        pcf = PostCreationForm(instance = post)
+        return render(request, 'staff_post_edit.html', {'form': pcf})
+    
+    pcf = PostCreationForm(data = request.POST, instance=post)
+    if pcf.is_valid():
+        pcf.save()
+        return redirect('staff_home')
+    return render(request, 'staff_post_edit.html', {'form': pcf})
+    
+    
+    

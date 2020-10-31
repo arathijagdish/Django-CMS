@@ -1,0 +1,41 @@
+{% extends 'staff_base.html' %}
+
+{% block meta %}
+    <title>Django CMS</title>
+{% endblock meta %}
+
+
+{% block header %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+{% endblock header %}
+
+
+{% block content %}
+    <h1 class="text-center">Edit Post</h1>
+    <div class="container">
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+{% endblock content %}
+    
+
+{% block footer %}
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("id_body") });
+    document.getElementById('id_body').removeAttribute('required');
+
+    var title = document.getElementById('id_title');
+    title.addEventListener('keyup', slugify);
+    slugField = document.getElementById('id_slug');
+    function slugify(){
+        text = title.value;
+        slug = text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+        slugField.value = slug;
+    }
+</script>
+{% endblock footer %}
+    
