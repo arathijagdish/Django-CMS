@@ -32,7 +32,8 @@
                         {% else %}
                             <p>Preview not provided.</p>
                         {% endif %}
-                            
+                        
+                        <a href="{% url 'viewpost' url=p.slug %}">[Read More]</a>
                     </div>
                 </div>
             </div>
