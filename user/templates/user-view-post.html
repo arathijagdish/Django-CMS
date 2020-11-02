@@ -5,10 +5,13 @@
 {% endblock meta %}
 
 
-{% block content %}
-    <h1 class="text-center">{{ data.title }}</h1>
+{% block content %}    
+    <div class="container">
+        <h1 class="text-center mt-5 post-title">{{ data.title }}</h1>
 
-<div class="container">
+        {% if data.featured_image %}
+            <img class="img-fluid m-5" src="{{ data.featured_image.url }}" alt="">
+        {% endif %}
     
     {% autoescape off %}
     <article>
