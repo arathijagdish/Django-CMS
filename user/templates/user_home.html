@@ -21,7 +21,13 @@
                         
                     <div class="card-body">
                         <h4 class="card-title">{{ p.title }}</h4>
-                        <p class="card-text">Content goes here.</p>
+                        
+                        {% if p.description %}
+                            <p class="card-text">{{ p.description }}</p>
+                        {% else %}
+                            <p>Preview not provided.</p>
+                        {% endif %}
+                            
                     </div>
                 </div>
             </div>

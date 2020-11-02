@@ -17,6 +17,11 @@ class PostCreationForm(ModelForm):
                     'class': 'form-control'
                 }
             ),
+            'description':Textarea(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
             'slug':TextInput(
                 attrs={
                     'class': 'form-control'

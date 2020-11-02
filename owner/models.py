@@ -18,7 +18,7 @@ class Post(models.Model):
 
     featured_image = models.ImageField(
         upload_to = 'images/',
-        blank = True
+        blank = True,
     )
     
     body = models.TextField(
@@ -41,6 +41,12 @@ class Post(models.Model):
         verbose_name="Slug",
         max_length=200,
         unique=True
+    )
+    description = models.CharField(
+        max_length=255,
+        null=False,
+        blank=True,
+        help_text='This will be added as the meta description.'
     )
     created_by = models.ForeignKey(
         to=User,
