@@ -6,19 +6,24 @@
 
 
 {% block content %}
-<h1 class="text-center">Welcome</h1>\
+<h1 class="text-center">Recent Posts</h1>
 <div class="container">
     <div class="row">
         {% for p in data %}
             <div class="col-sm-4">
-                <div class="card">
+                <div class="card mb-5">
                     
                     {% if p.featured_image %}
                         <img class="card-img-top img-responsive" src="{{ p.featured_image.url }}">
                     {% else %}
                         <img class="card-img-top" src="https://dummyimage.com/200x100.jpg?text=Post" alt="">
                     {% endif %}
-                        
+                    
+                    <div class="m-2">
+                        <span class="fa fa-user"> {{ p.created_by }}</span> |
+                        <span class="fa fa-clock-o"> {{ p.created_on | timesince }} ago</span>
+                    </div>
+
                     <div class="card-body">
                         <h4 class="card-title">{{ p.title }}</h4>
                         
