@@ -1,8 +1,39 @@
 from django.db import models
-from django.db.models.fields import DateTimeField
 from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
 
 # Create your models here.
+class Category(models.Model):
+    id = models.BigAutoField(
+        primary_key=True
+    )
+
+    name = models.CharField(
+        max_length=50,
+        verbose_name="Category Name",
+        null=False,
+        blank=False,
+        unique=True
+    )
+
+    slug = models.CharField(
+        max_length=100,
+        verbose_name="Category URL",
+        null=False,
+        blank=False,
+        unique=True
+    )
+
+    description = models.CharField(
+        max_length=170,
+        verbose_name="Category description",
+        null=False,
+        blank=False,
+        validators=[
+            MinLengthValidator("Description should be at least 10 chars long"),
+        ]
+    )
+
 class Post(models.Model):
     id = models.BigAutoField(
         primary_key=True
@@ -52,3 +83,5 @@ class Post(models.Model):
         to=User,
         on_delete=models.CASCADE
     )
+
+
