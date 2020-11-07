@@ -1,4 +1,4 @@
-from django.http.response import HttpResponseNotFound
+from django.http.response import HttpResponseBadRequest, HttpResponseNotFound
 from owner.models import Post
 from django.http import request
 from accounts.views import login
@@ -21,3 +21,10 @@ def viewpost(request, url):
         return render(request, 'user-view-post.html', {'data': post})
     except:
         return HttpResponseNotFound()
+
+def search(request):
+    search = request.GET.get('s')
+    if search:
+        posts = Post.objects.filter(title__contains = search).order_by('-created_on')[:50]
+        return render(request, 'user_home.html', {'data': posts})
+    return HttpResponseBadRequest()
