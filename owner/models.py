@@ -80,5 +80,10 @@ class Post(models.Model):
         to=User,
         on_delete=models.CASCADE
     )
+    category = models.ForeignKey(
+        to=Category,
+        default=1,
+        on_delete=models.CASCADE
+    )
 
 
