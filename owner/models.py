@@ -29,9 +29,6 @@ class Category(models.Model):
         verbose_name="Category description",
         null=False,
         blank=False,
-        validators=[
-            MinLengthValidator("Description should be at least 10 chars long"),
-        ]
     )
 
 class Post(models.Model):
