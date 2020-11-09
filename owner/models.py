@@ -31,6 +31,9 @@ class Category(models.Model):
         blank=False,
     )
 
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     id = models.BigAutoField(
         primary_key=True

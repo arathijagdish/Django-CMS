@@ -1,4 +1,4 @@
-from django.forms import forms, ModelForm, TextInput, Textarea
+from django.forms import forms, ModelForm, TextInput, Textarea, Select
 from .models import Post
 
 class PostCreationForm(ModelForm):
@@ -23,6 +23,11 @@ class PostCreationForm(ModelForm):
                 }
             ),
             'slug':TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'category':Select(
                 attrs={
                     'class': 'form-control'
                 }
