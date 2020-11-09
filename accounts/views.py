@@ -1,6 +1,6 @@
 import django
 from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 # Create your views here.
@@ -36,3 +36,7 @@ def register(request):
 
     # If the form is invalid
     return render(request, 'register.html', {'form': ucf})
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
