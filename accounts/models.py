@@ -49,6 +49,12 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
+    name = models.CharField(
+        verbose_name='Name',
+        blank=False,
+        max_length=100,
+        default='App User'
+    )
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
